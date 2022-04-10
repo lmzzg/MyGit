@@ -1,0 +1,91 @@
+<!DOCTYPE html><!--输入!直接搭好框架-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理程序</title>
+</head>
+<body>
+    <button type = "button" onclick="alert('hello')" onmouseout="test()">按钮</button>
+    <button type = "button" id = "btn" >dom0级</button><!--只能为同一个元素的同一个事件设置一个事件程序-->
+    <button type = "button" id = "btn2" >dom2级</button><!--只能为同一个元素的同一个事件设置多个事件程序-->
+    
+    姓名:<input type = 'text' id = 'uname'>
+    <hr>
+    城市:<select id='city'>
+        <option>请选择城市</option>
+        <option>上海</option>
+        <option>北京</option>
+
+    </select>
+<hr>
+<div id='div1'>
+    这是一个div
+</div>
+
+</body>
+<script type = "text/javascript">
+    function test(){
+        console.log('鼠标移开了');
+    }
+//dom0级
+    //通过id属性值获取对象
+    var btn = document.getElementById("btn");
+    //给指定元素绑定点击事件 
+    btn.onclick = function(){
+        console.log('dom0');
+    }
+    btn.onclick = function(){
+        console.log('dom0hh');
+    }
+
+//dom2级
+    var btn2 = document.getElementById("btn2");
+    //给按钮绑定事件监听
+    btn2.addEventListener('click',function(){console.log('dom2级');});//匿名函数写法
+    btn2.addEventListener('click',fn);
+    function fn(){
+        console.log('按钮被点击了');
+    }
+    //移除事件
+    // btn2.removeEventListener('click',fn);//不能移除匿名函数
+
+//常用事件
+//onload:当页面或图像加载完成后立即触发
+window.onload = function(){
+    console.log('页面加载完毕...');
+}
+var uname = document.getElementById('uname');
+//onblur:元素失去焦点
+uname.onblur = function(){
+    console.log('文本框失去焦点');
+}
+//onfocus:元素获得焦点
+uname.onfocus = function(){
+    console.log('文本框获得焦点');
+}
+
+//onchange:用户改变域的内容
+document.getElementById('city').onchange = function(){console.log('下拉框的值改变了')}
+
+//onmouseover:鼠标移动到某个元素上
+var div1= document.getElementById('div1'); 
+div1.onmouseover = function(){
+    console.log('鼠标悬停');
+}
+//onmouseout:鼠标离开某个元素
+var div1= document.getElementById('div1'); 
+div1.onmouseout = function(){
+    console.log('鼠标移开');
+}
+//onkeydown:某个按键被按下
+uname.onkeydown = function(){
+    console.log('按键按下');
+}
+//onkeyup:某个按键弹起
+uname.onkeyup = function(){
+    console.log('按键弹起');
+}
+</script>
+</html>

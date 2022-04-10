@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>count:{{count}}</h3>
+        <!-- $event 可以解决事件参数对象event被覆盖的问题 -->
+        <button @click="addCount(2,$event)">+2</button>
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue(
+            {
+                el: '#app',
+                data: {
+                    count: 0,
+                },
+                methods: {
+                    addCount(step, e) {
+                        const bgColor = e.target.style.backgroundColor
+                        e.target.style.backgroundColor = bgColor === 'red' ? '' : 'red'
+                        this.count += step
+                    },
+                },
+            }
+        )
+    </script>
+</body>
+
+</html>

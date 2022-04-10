@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间函数</title>
+</head>
+<body>
+    <button type = "button" onclick = 'toBaidu()'>3秒钟后跳转到百度</button>
+    <hr>
+    <button type = "button" onclick = 'init()'>开始</button>
+    <button type = "button" onclick = 'stop()'>暂停</button>
+    <h2 id = 'time'></h2>
+    <hr>
+    <button type = 'button' onclick = "hello()">定时执行</button>
+</body>
+<script type = 'text/javascript'>
+    //3秒后跳转到百度    
+    function toBaidu(){
+        setTimeout(test,3000);//参数1：执行函数 参数2 ：时间，单位毫秒
+    }
+    //打开百度
+    function test(){
+        window.open('http://www.baidu.com');
+    }
+
+    //计时功能
+    console.log(new Date().toLocaleTimeString());
+    var id;
+    function init(){
+        var time = new Date().toLocaleTimeString();
+        //将时间赋值给h2标签
+        document.getElementById('time').innerHTML = time;
+        //递归调用，每一秒调用一下，实现时间变化
+        id = setTimeout(init,1000);
+    }
+        //停止计时
+        function stop(){
+            clearTimeout(id);
+        }
+    
+    // 定时执行
+    function hello(){
+        setInterval(function(){
+            console.log('你好');
+        },1000);
+    }
+</script>
+</html>

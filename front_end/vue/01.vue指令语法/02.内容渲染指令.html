@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p v-text="username"></p>
+        <p v-text="gender">性别</p>
+        <!-- v-text 指令会覆盖元素内默认的值。 -->
+        <p>姓名：{{username}}</p>
+        <p>性别：{{gender}}</p>
+        <!-- 插值表达式（英文名为：Mustache）不会覆盖元素内默认的值 -->
+        <p>__________________________________________________________________________</p>
+        <p v-text="desc"></p>
+        <p>{{desc}}</p>
+        <!-- 包含 HTML 标签的字符串时用v-html -->
+        <p v-html="desc"></p>
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                username: 'zs',
+                gender: '男',
+                desc: '<i style="color:red;">abc<i>'
+            }
+        })
+    </script>
+</body>
+
+</html>

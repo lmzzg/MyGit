@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取节点</title>
+</head>
+<body>
+    <!--
+        tips:操作dom必须等节点初始化完毕后,才能执行.
+        处理方式有两种:
+        (1)把script调用标签移到HTML末尾即可;
+        (2)使用onload事件来处理js,等待HTML加载完毕再加载onload事件里的js.
+        
+    -->
+
+    <p id = 'p1' class = 'para'>这是一个段落<span> 文本</span></p>
+    <p id = 'p1' class = 'para'>这又是一个段落</p>
+    <input type="text " name = "txt">
+    <input type="checkbox" name="hobby" value="游泳">游泳
+    <input type="checkbox" name="hobby" value="篮球">篮球
+    <input type="checkbox" name="hobby" value="足球">足球
+    <hr>
+    <a href="javascript:void(0)" onclick = "testById()">按照id获取</a>
+    <a href="javascript:void(0)" onclick = "testByName()">按照name获取</a>
+    <a href="javascript:void(0)" onclick = "testByTagName()">按照标签名获取</a>
+    <a href="javascript:void(0)" onclick = "testByClass()">按照class(样式名)获取</a>
+    <!--
+        说明：href="javascript:void(0)"：伪协议，表示不执行跳转，而执行指定的点击事件。
+    -->
+</body>
+
+<script type= "text/javascript">
+function testById(){
+    var p = document.getElementById("p1");
+    console.log(p);//同名id,优先获取第一个
+}
+
+function testByName(){
+    var hobbys = document.getElementsByName("hobby");
+    console.log(hobbys[0]);//返回一个数组
+}
+
+function testByTagName(){
+    var inputs = document.getElementsByTagName("input");
+    console.log(inputs[1]);//返回一个数组
+
+// 打印数组元素
+for(var i = 0;i<inputs.length;i++){
+    console.log(inputs[i].type);//input的类型
+    console.log(inputs[i].value);
+    if(inputs[i].type =="checkbox"){
+        console.log(inputs[i].checked);//框是否选中
+    }
+}
+}
+    
+
+function testByClass(){
+			var clas = document.getElementsByClassName("para");
+			console.log(clas.length);//返回一个数组
+		}
+</script>
+</html>

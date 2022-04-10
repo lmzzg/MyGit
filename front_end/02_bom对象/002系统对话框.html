@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>系统对话框</title>
+</head>
+<body>
+    <button type='button' onclick='testAlert()'>消息框</button>
+    <button type = 'button' onclick = 'testPrompt()'>输入框</button>
+    <button type = 'button' onclick = 'testConfirm()'>确认框</button>
+
+    <button type = 'button' id = 'btn1'>打开窗口</button> 
+    <button type = 'button' id = 'btn2'>关闭窗口</button>
+</body>
+
+<script type = 'text/javascript'>
+//消息框：alert('')
+function testAlert(){
+    alert('hello');
+    console.log('确认之后才出现');
+}
+
+//输入框：prompt()返回输入框中的值
+function testPrompt(){
+    var uname = window.prompt('请输入用户名','');//第二参数是默认输入文本
+    console.log(uname);
+}
+
+//确认框：confirm，返回true/false。
+function testConfirm(){
+    var flag = confirm('您确认要删除该记录吗？');
+    if(flag){
+        alert('删除成功');
+    }
+    else{
+        alert('没事别瞎点');
+    }
+}
+//打开新页面open（），关闭新页面close（）。
+document.getElementById('btn1').onclick = function(){
+    //打开空白页面
+    // window.open();
+    //打开指定页面
+    // window.open('001事件.html');
+    //打开网址,不新建
+     // window.open('http://www.baidu.com','_self');
+}
+
+document.getElementById('btn2').onclick =function(){
+    
+    window.close();//不能关闭自己,只能关闭打开的页面
+}
+
+</script>
+</html>

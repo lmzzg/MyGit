@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li id="red">红色</li>
+        <li>绿色</li>
+    </ul>
+    <span id="programmer">程序猿</span>
+    <a href="javascript:void(0)" onclick="delNode();">删除</a>
+    <!-- 
+		childNodes 		返回元素的一个子节点的数组
+		children 		返回元素的所有的子元素数组
+		
+        firstChild 		返回元素的第一个子节点
+		firstElementChild
+		
+        lastChild 		返回元素的最后一个子节点
+		lastElementChild
+		
+        nextSibling 	返回元素的下一个兄弟节点
+		nextElementSibling
+		
+        previousSibling 返回元素的上一个兄弟节点
+		previousElementSibling
+		
+        parentNode 		返回元素的父节点
+		parentElement
+	 
+	 -->
+</body>
+
+<script type="text/javascript">
+    // 得到ul
+    var ul = document.getElementsByTagName("ul")[0];
+    
+    // childNodes 返回元素的一个子节点的数组
+    console.log(ul.childNodes);
+    
+    // children 	返回元素的所有的子元素数组
+    console.log(ul.children);
+    
+    // firstChild 		返回元素的第一个子节点
+	console.log(ul.firstChild);
+	console.log(ul.firstElementChild);
+    
+    // nextSibling 	返回元素的下一个兄弟节点
+	console.log(document.getElementById("red").nextSibling);
+	console.log(document.getElementById("red").nextElementSibling);
+
+    // previousSibling 返回元素的上一个兄弟节点
+    console.log(document.getElementById("red").previousSibling);
+	console.log(document.getElementById("red").previousElementSibling);
+
+    // parentNode 		返回元素的父节点
+    console.log(ul.parentNode);
+    var li = document.getElementById("red");
+    console.log(li.parentNode);
+	//  parentElement
+	console.log(ul.parentElement);
+
+
+    //删除元素
+    function delNode(){
+        //得到被删除的对象
+        var span = document.getElementById("programmer");
+        //得到被删除对象的父元素
+        var parent = span.parentElement;
+        //删除
+        parent.removeChild(span);
+    }
+</script>
+</html>

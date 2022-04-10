@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="flag=!flag">Toggle Flag</button>
+        <p v-if="flag">请求成功 --- 被 v-if 控制</p>
+        <p v-show="flag">请求成功 --- 被 v-show 控制</p>
+        <!-- 实现原理不同：
+        ⚫ v-if 指令会动态地创建或移除DOM 元素，从而控制元素在页面上的显示与隐藏；
+        ⚫ v-show 指令会动态为元素添加或移除 style="display: none;" 样式，从而控制元素的显示与隐藏；
+        性能消耗不同：
+        v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。
+        ⚫ 如果需要非常频繁地切换，则使用 v-show 较好
+        ⚫ 如果在运行时条件很少改变，则使用 v-if 较好 -->
+
+        <hr>
+        <p v-if="num>0.5">随机数>0.5</p>
+        <p v-else>随机数 ≤ 0.5</p>
+        <hr>
+        <p v-if="type ==='A'">优秀</p>
+        <p v-else-if="type ==='B'">良好</p>
+        <p v-else-if="type ==='C'">一般</p>
+        <p v-else>差</p>
+
+    </div>
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue(
+            {
+                el: '#app',
+                data: {
+                    // flag 用来控制元素的显示与隐藏
+                    // 值为 true 时显示元素
+                    // 值为 false 时隐藏元素
+                    flag: false,
+                    num: Math.random(),
+                    type:'A'
+                },
+            }
+        )
+    </script>
+
+</body>
+
+</html>

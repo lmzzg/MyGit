@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- v-model的使用 -->
+    <div id="app">
+        <p>您的高考生源地是：{{province}}</p>
+        <select v-model="province">
+            <option value="">请选择</option>
+            <option value="北京市">北京市</option>
+            <option value="上海市">上海市</option>
+            <option value="陕西省">陕西省</option>
+            <option value="江苏省">江苏省</option>
+            <option value="河北省">河北省</option>
+            <option value="河南省">河南省</option>
+            <option value="贵州省">贵州省</option>
+        </select>
+        <hr>
+        <p>您的高考成绩是：{{grade}}</p>
+        <!-- v-model的修饰符：.number自动将用户输入值转为数值类型
+                        .trim自动过滤用户输入的首尾空白字符
+                        .lazy在change时更新而非输入时 -->
+        <input type="text" :placeholder="grade" v-model.number.trim.lazy="grade">
+        <button @click="submit">点击查询可报考院校及专业</button>
+    </div>
+
+    <script src="./lib/vue-2.6.12.js"></script>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                grade:'请输入您的高考成绩',
+                province:'',
+            },
+            methods:{
+                submit(){
+                    alert('后续功能还在开发中。。。。')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建节点和插入节点</title>
+</head>
+<body>
+    <!-- 
+		 创建节点
+			createElement()			创建一个新的节点，需要传入节点的标签名称，返回创建的元素对象
+			createTextNode()		创建一个文本节点，可以传入文本内容
+			innerHTML 				也能达到创建节点的效果，直接添加到指定位置了
+		
+		插入节点
+			write()					将任意的字符串插入到文档中
+			appendChild()			向元素中添加新的子节点，作为最后一个子节点
+			insertBefore()			向指定的已有的节点之前插入新的节点
+										newItem：要插入的节点
+										exsitingItem：参考节点   需要参考父节点
+	 
+	 -->
+     <button onclick="addPara();">添加段落</button>
+		<button onclick="addImg();">添加图片</button>
+		<button onclick="addTxt();">添加文本框</button>
+		<button onclick="addOptions()">添加选项</button>
+		<button onclick="addNewNode()">添加新节点</button>
+        <select name="music">
+			 <option value="-1">你喜欢的一首歌</option>
+			 <option value="4">rubia</option>
+            <option value="0">CyberAngel</option>
+            <option value="1">逍遥叹</option>
+            <option value="2">烟花易冷</option>
+            <option value="3">平行宇宙</option>
+        </select>
+		<hr>
+		<div id="container">
+
+		</div>
+
+		<hr>
+		<ul>
+			<li id="red">红色</li>
+			<li>绿色</li>
+		</ul>
+</body>
+<script type="text/javascript">
+	//添加段落
+	function addPara(){
+		//获取容器
+		var div = document.getElementById("container");
+		// //方式1
+		// //创建p元素
+		// var p = document.createElement("p");
+		// //创建文本节点
+		// var txt = document.createTextNode("El psy conguroo！");
+		// //将文本节点追加到元素节点中
+		// p.appendChild(txt);
+		// //将p标签设置到div中
+		// div.appendChild(p);
+
+		// //方式2
+		// //创建p元素
+		// var p = document.createElement("p");
+		// //给p元素赋值
+		// p.innerHTML = "dululu";
+		// console.log(p);
+		// //将p标签设置到div中
+		// div.appendChild(p);
+
+		//方式3
+		var p = "<p>这是文本</p>";
+		div.innerHTML += p;
+	}
+
+	//添加图片
+	function addImg(){
+		//获取容器
+		var div = document.getElementById("container");
+		
+		// //方式1
+		// // 创建img元素
+		// var img = document.createElement("img");
+		// // 设置属性
+		// img.src = "E:/coding/vscode背景图/96.jpg";
+		// console.log(img);
+		// // 设置宽高属性
+		// img.width = 1000;
+		// img.height = 750;
+		// // 将图片设置到div容器中
+		// div.appendChild(img);
+		
+		//方式2
+		// 创建img元素
+		var img = document.createElement("img");
+		// 设置属性
+		img.setAttribute("src", "E:/coding/vscode背景图/96.jpg");
+		img.width = 1600;
+		img.height = 900;
+		// 将图片设置到div容器中
+		div.appendChild(img);
+
+		// //方式3
+		// var img = "<img src = 'E:/coding/vscode背景图/96.jpg' />";
+		// div.innerHTML += img; 
+	}
+
+	//添加文本框
+	function addTxt(){
+		// 得到容器元素
+		var div = document.getElementById("container");
+		//方式1
+		// 创建input元素
+		var inp = document.createElement("input");
+		// 指定input元素的类型
+		inp.type = "text"; // input类型：文本框
+		inp.value = "今天天气不错"; // 文本框的值
+
+		// 将input元素设置到容器中
+		div.appendChild(inp);
+		
+		// //方式2
+		// //创建input元素
+		// var inp = document.createElement("input");
+		// // 设置属性
+		// inp.setAttribute("type","text");
+		// inp.setAttribute("value","你好");
+		// // 将input元素设置到容器中
+		// div.appendChild(inp);
+		
+		// //方式3
+		// var inp = "<input type='text' value='hello' />";
+		// div.innerHTML += inp;
+	}
+
+	function addOptions(){
+		//获取容器
+		var music = document.getElementsByName("music")[0];
+		// //方式1
+		// // 创建下拉选项
+		// var opt = document.createElement("option");
+		// // 设置文本和值
+		// opt.value="0";
+		// opt.text= "晴天";
+		// console.log(opt);
+		// // 给下拉框添加下拉选项
+		// music.appendChild(opt);
+		
+		//方式2
+		//创建下拉选项
+		var opt = document.createElement("option")
+		// 设置属性
+		opt.value="2";
+		opt.text= "青花瓷";
+		//将option添加到下拉列表中
+		console.log(music.options);
+		music.options.add(opt); 
+
+		//方式3
+		var opt = '<option value="2">千里之外</option>';
+		music.innerHTML += opt;
+	}
+
+
+	// write()		将任意的字符串插入到文档中
+	document.write("<h2>你好</h2>");
+	document.write("<h2>Hello</h2>");
+
+	// insertBefore()	向指定的已有的节点之前插入新的节点
+	function addNewNode(){
+		var li = document.createElement("li");
+		var txt = document.createTextNode("粉色");
+		li.appendChild(txt);
+		document.getElementById("red").parentElement.insertBefore(li,document.getElementById("red"));
+	}
+	
+
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location对象</title>
+</head>
+<body>
+    <button type="button" onclick="test()">跳转</button>
+    <button type="button" onclick = "test1()">replace</button>
+    <button type="button" onclick = "test2()">reload</button>
+    
+    <!--
+        一个属性：href:设置或返回完整的url
+        两个方法：reload():重新加载当前文档
+                 replace():用新的文档替换当前文档（不能后退）
+    -->
+</body>
+<script type="text/javascript">
+    //获取当前页面的url
+    console.log(window.location.href);
+
+    //用href属性设置url页面跳转
+    function test(){
+        window.location.href = "http://www.mihoyo.com";
+    }
+
+    //用replace方法跳转
+    function test1(){
+        window.location.replace("http://www.mihoyo.com");
+    }
+
+    //reload刷新页面
+    function test2(){
+        window.location.reload();
+    }
+
+</script>
+</html>
